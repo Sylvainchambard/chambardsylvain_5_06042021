@@ -1,0 +1,45 @@
+body
+{
+    width: 100%;
+    margin: auto;
+}
+
+h1 
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+section
+{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.all
+{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+      border: 2px solid black;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    
+    }
+
+p {
+    padding: 0px 10px 10px 10px;
+  
+}
+
+img {
+    
+        width: auto;
+        height: 240px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        object-fit: cover;
+    }
