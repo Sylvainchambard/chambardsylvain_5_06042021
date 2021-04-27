@@ -2,35 +2,53 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://kit.fontawesome.com/41026f3778.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style_product.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ORINOCO</title>
 </head>
 <body>
-<main> 
-    <h1>ORINOCO</h1>
-        <section id="ancre_produit">
-            <div class="mise_en_page">     
-                <img src="" id="picture"/>
-                <div class="name_price">
-                    <p id="name"></p>
-                    <p id="price"> </p>
-                 </div>    
-                    <p id="description"></p>
-                    <p id="info_colors"></p>
-                <form>
-                    <label for="option"></label>
-                    <select id="option">
-                                                
-                    </select>
-                </form>
-                <button id="btn_envoyer">Ajouter l'article au panier</button>
-                        
-            </div>   
-    </section>
-</main>
+   
+    <header>
+        <div id="display_header">
+            <img src ="images/logo.png" alt="logo de l'entreprise ORINOCO"/>
+            <div class="basket">
+                <i class="fas fa-shopping-basket"></i>
+                
+            </div>
+        </div>    
+    </header>
+    
+    <main> 
+        
+            <section id="ancre_produit">
+                <div class="mise_en_page">
+                    <div class="img_name_descr">  
+                        <img src="" id="picture"/>
+                        <div class="name_descr">
+                            <h1 id="name"></h1>
+                            <p id="description"></p>  
+                        </div>   
+                    </div>     
+                        <p id="price"></p>
+                        <div class="select">
+                            <p id="info_colors"></p>
+                            <form>
+                                <label for="option"></label>
+                                <select id="option">
+                                </select>
+                            </form>
+                     
+                     
+                    <button id="btn_envoyer">Ajouter l'article au panier</button>
+                        </div>    
+                </div>   
+        </section>
+    </main>
 
+    <footer>
 
+    </footer>
 
 
  

@@ -1,0 +1,83 @@
+body
+{
+    width: 100%;
+    margin: auto;
+}
+/*------ Header -----*/
+header 
+{
+    margin: auto;
+   
+}
+
+#display_header
+{
+    display: flex;
+    background-color: #f3e9f1;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.fa-shopping-basket
+{
+    
+    display: flex;
+    align-items: center;
+    font-size: 36px;
+}
+
+.basket 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/*----- Main -----*/
+main
+{   
+   
+    display: flex;
+    padding-top: 25px;
+    margin: auto;
+    width: 90%;
+    justify-content: space-around;
+}
+
+.img_name_descr
+{
+    display: flex;
+}
+
+.name_descr{
+    display: flex;
+   flex-direction: column;
+   padding-left: 10px;
+}
+
+#picture 
+{   border: 2px solid black;
+    max-width: 250px;
+    margin: auto;
+}
+
+#price
+{
+    text-align: center;
+}
+
+
+.select
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#btn_envoyer 
+{
+    margin: 10px;
+    background-color: #f3e9f1 ;
+}

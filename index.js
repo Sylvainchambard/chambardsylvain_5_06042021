@@ -20,7 +20,7 @@ function remplirListeProduits(nounours) {
     
   let paragraphe = document.createElement("p")      // création 
   paragraphe.innerText = elem.name             // recup
-
+ 
   
   let price = document.createElement ("p")
   price.innerText = elem.price/100+" €"
@@ -32,6 +32,7 @@ function remplirListeProduits(nounours) {
   image.src = elem.imageUrl
   
   let btn = document.createElement("BUTTON");  // créé le bouton
+  btn.setAttribute("id", "btn") 
   btn.innerHTML = "Voir Produit"
 
       ancre.appendChild(divClass) 
