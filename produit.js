@@ -62,10 +62,12 @@ const id = urlSearchParams.get("id")
 
       //stocker les valeurs du formulaire dans le local storage
       function ajoutProduitLocalStorage() {
-        //ajout dans le tableau de l'objet avec les valeurs choisis par l'utilisateur
-        produitEnregistre.push(optionProduit)
-        // transformation en format JSON et l'envoyer dans la key "produit" du localStorage
-        localStorage.setItem("produit", JSON.stringify(produitEnregistre))
+
+      //ajout dans le tableau de l'objet avec les valeurs choisis par l'utilisateur
+      produitEnregistre.push(optionProduit)
+        
+      // transformation en format JSON et l'envoyer dans la key "produit" du localStorage
+      localStorage.setItem("produit", JSON.stringify(produitEnregistre))
       }
 
       // si y a déja des produit dans le local storage
@@ -92,8 +94,8 @@ const id = urlSearchParams.get("id")
  function addChips(){
    let tableau = JSON.parse(localStorage.getItem("paquetChips")) 
    let str = "chips"
-   tableau.push(str)
+    tableau.push(str)
    
-   localStorage.setItem("paquetChips", JSON.stringify(tableau)) 
+localStorage.setItem("paquetChips", JSON.stringify(tableau)) 
    
  }
