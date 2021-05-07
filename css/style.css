@@ -7,7 +7,6 @@ body
 header 
 {
     margin: auto;
-   
 }
 
 #display_header
@@ -15,24 +14,16 @@ header
     display: flex;
     background-color: #f3e9f1;
     justify-content: space-between;
-    padding: 20px;
+    padding: 5px 20px 0px 0px;
+    align-items: center;
 }
 
-.fa-shopping-basket
+.fa-shopping-cart
 {
-    
+    color: rgb(159, 0, 180);
     display: flex;
     align-items: center;
     font-size: 36px;
-}
-
-.basket 
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
 }
 
 h1 
