@@ -6,6 +6,18 @@ let produitEnregistre = JSON.parse(localStorage.getItem("produit"))
     
 let panierHtml = document.getElementById("produit_select")
 
+
+function checkQty(liste, option){
+    let total = 1
+    for(l = 0; l < liste.length; l++) {
+       if(liste[l] == option) {
+           total++
+       }
+    }console.log(total)
+return total
+
+}
+
 if(produitEnregistre === null || produitEnregistre == 0){
     let phrasePanierVide =`
     <div class="panier_vide">
@@ -16,6 +28,8 @@ panierHtml.innerHTML = phrasePanierVide
 
   } else {
     for (let i = 0; i < produitEnregistre.length; i++) {
+        let qty = checkQty (produitEnregistre, produitEnregistre[i].option)
+             
       document.getElementById("produit_select").innerHTML += `
         <div class="produit__panier">
             <div class="picture">
@@ -25,6 +39,7 @@ panierHtml.innerHTML = phrasePanierVide
                 <p>${produitEnregistre[i].nom}</p>
                 <p>Option : ${produitEnregistre[i].option}</p>
                 <p>Prix : ${produitEnregistre[i].prix} €</p>
+                <p>Quantité : ${qty} </p>
             </div>
             <div class="trash">    
                 <button class="btn_delete"> <i class="fas fa-trash-alt"></i> </button>
@@ -96,16 +111,59 @@ function afficherPrixTotal () {
     
     const prixTotal = `
     <div class="total_price">
-        <p>${sum} €</p>
+        <p>Sous-total ( ${produitEnregistre.length} article(s) ) : ${sum} €</p>
     </div>
     <div class="btn_check_div">
-        <button class="btn_check">Commander</button>
+        <button onclick="displayForm()" class="btn_check">Valider votre panier</button>
     </div>
     `
-    panierHtml.insertAdjacentHTML("afterend",`Prix total : ${prixTotal}`)
+    panierHtml.insertAdjacentHTML("afterend", prixTotal)
 
 
 }
       afficherPrixTotal()
 
+ 
+// ----------- Formulaire
 
+let positionHtml = document.getElementById("formulaire")
+
+function displayForm () {
+    addEventListener("click", (event) => {
+        event.preventDefault()
+
+    const formulaire = `
+    
+    <div class="formulaire_limite">
+        <h2>Formulaire de validation de commande</h2>
+
+            <form action="post">
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <label for="adresse">Adresse :</label>
+                <input type="text" id="prenom" name="adresse" required>
+
+                <label for="ville">Ville :</label>
+                <input type="text" id="ville" name="ville" required>
+
+                <label for="codePostal">Code Postal :</label>
+                <input type="text" id="codePostal" name="codePostal" required>
+
+                <label for="email">E-mail :</label>
+                <input type="text" id="email" name="email" required>
+
+                <button onclick="envoyerForm()" class="btn_send_form">Passer la commande</button>
+            </form>
+    </div>        
+    `
+    positionHtml.innerHTML = formulaire
+    })
+}
+
+displayForm()
+
+function envoyerForm () {}
