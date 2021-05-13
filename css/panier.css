@@ -153,7 +153,6 @@ form
 
 input
 {
-    width: 80vh;
     margin-bottom: 10px;
 }
 
@@ -170,6 +169,12 @@ input
     margin: 15px;
 }
 
+#erreur
+{
+    text-align: center;
+    color: red;
+    
+}
 /* -------- footer -------- */
 footer
 {

@@ -88,16 +88,3 @@ const id = urlSearchParams.get("id")
      
               
                   
- 
-  
-  
-let tableau = JSON.parse(localStorage.getItem("paquetChips")) || []
-
- function addChips(){
-  
-    
-    let str = "chips"
-      
-    tableau.push(str)
-    localStorage.setItem('paquetChips', JSON.stringify(tableau))
- }

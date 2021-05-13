@@ -114,7 +114,7 @@ function afficherPrixTotal () {
         <p>Sous-total ( ${produitEnregistre.length} article(s) ) : ${sum} €</p>
     </div>
     <div class="btn_check_div">
-        <button onclick="displayForm()" class="btn_check">Valider votre panier</button>
+        <button class="btn_check">Valider votre panier</button>
     </div>
     `
     panierHtml.insertAdjacentHTML("afterend", prixTotal)
@@ -127,25 +127,24 @@ function afficherPrixTotal () {
 // ----------- Formulaire
 
 let positionHtml = document.getElementById("formulaire")
+btn = document.querySelector(".btn_check")
+console.log(btn)
+btn.onclick = function displayForm () {
+  
 
-function displayForm () {
-    addEventListener("click", (event) => {
-        event.preventDefault()
-
-    const formulaire = `
-    
+    const formulaireHtml = `    
     <div class="formulaire_limite">
         <h2>Formulaire de validation de commande</h2>
 
-            <form action="post">
+            <form id="envoie">
                 <label for="prenom">Prénom :</label>
                 <input type="text" id="prenom" name="prenom" required>
 
                 <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" required>
+                <input type="text" id="nom" name="nom" required >
 
                 <label for="adresse">Adresse :</label>
-                <input type="text" id="prenom" name="adresse" required>
+                <input type="text" id="adresse" name="adresse" required>
 
                 <label for="ville">Ville :</label>
                 <input type="text" id="ville" name="ville" required>
@@ -156,14 +155,138 @@ function displayForm () {
                 <label for="email">E-mail :</label>
                 <input type="text" id="email" name="email" required>
 
-                <button onclick="envoyerForm()" class="btn_send_form">Passer la commande</button>
+                <input type="submit" class="btn_send_form"  name="valider" value="Envoyer" required>
             </form>
+            <div id="erreur"></div>
     </div>        
     `
-    positionHtml.innerHTML = formulaire
-    })
+    positionHtml.innerHTML = formulaireHtml   
+
+
+ 
+
+
+ 
+// ------------------Récupération des valeurs du form
+
+//Selection du bouton
+let positionDom = document.querySelector(".btn_send_form")
+console.log(positionDom)
+let erreur = document.getElementById("erreur")
+
+
+positionDom.addEventListener("click", (e) => {
+    e.preventDefault()
+    
+
+    const formulaireValues = {
+        nom : document.getElementById("nom").value,
+        prenom : document.getElementById("prenom").value,
+        adresse : document.getElementById("adresse").value,
+        ville : document.getElementById("ville").value,
+        codePostal : document.getElementById("codePostal").value,
+        email : document.getElementById("email").value
+
+    }
+console.log(formulaireValues)
+
+//-----------Controle du formulaire 
+const regExPrenomNomVille = (value) => {
+    return /^^[A-Za-zéè]+([ \-']?[a-zA-Za-zéè]+[ \-']?[a-zA-Za-zéè]+[ \-']?)[a-zA-Za-zéè]+$/.test(value)
 }
 
-displayForm()
+const regExCodePostal = (value) => {
+    return /^[0-9]{5}$/.test(value)
+}
 
-function envoyerForm () {}
+const regExEmail = (value) => {
+    return /^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i.test(value)
+}
+
+const regExAdresse = (value) => {
+    return /^[A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ0-9\s]{5,60}$/.test(value)
+}
+
+// controle prénom
+function prenomCtrl(){
+    let lePrenom = formulaireValues.prenom
+    if (regExPrenomNomVille(lePrenom)) {
+        return true
+      } else {
+        alert("Prénom incorrect")
+        return false
+      }
+}
+
+//controle nom
+function nomCtrl(){
+    let leNom = formulaireValues.nom
+    if (regExPrenomNomVille(leNom)) {
+        return true
+      } else {
+        alert("Nom incorrect")
+        return false
+      }
+}
+
+//controle adresse
+function adresseCtrl(){
+    let laAdresse = formulaireValues.adresse
+    if (regExAdresse(laAdresse)) {
+        return true
+      } else {
+        alert("Adresse incorrect")
+        return false
+      }
+}
+
+//controle ville
+function villeCtrl(){
+    let laVille = formulaireValues.ville
+    if (regExPrenomNomVille(laVille)) {
+        return true
+      } else {
+        alert("Ville incorrect")
+        return false
+      }
+}
+
+//controle CodePostal
+function codePostalCtrl(){
+    let leCodePostal = formulaireValues.codePostal
+    if (regExCodePostal(leCodePostal)) {
+        return true
+      } else {
+        alert("Code Postal incorrect")
+        return false
+      }
+}
+
+function emailCtrl(){
+    let leEmail = formulaireValues.email
+    if (regExEmail(leEmail)) {
+        return true
+      } else {
+        alert("Email incorrect")
+        return false
+      }
+}
+
+// envoie des donnes formulaire dans le localStorage
+if (prenomCtrl() && (nomCtrl()) && villeCtrl() && codePostalCtrl() && emailCtrl() && adresseCtrl() ) {
+    localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
+} else {
+    alert("Veuillez remplir tous les champs du formulaire")
+}
+
+const aEnvoyer = {
+    produitEnregistre,
+    formulaireValues
+}
+console.log(aEnvoyer)
+
+
+ 
+displayForm()
+})
+}
