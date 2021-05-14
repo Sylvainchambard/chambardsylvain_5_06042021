@@ -1,6 +1,6 @@
 
 
-// ETAPE 1 - visualisation et récupération ID 
+// visualisation et récupération ID 
 const queryString_url_id = window.location.search
 const urlSearchParams = new URLSearchParams(queryString_url_id)
 const id = urlSearchParams.get("id")
@@ -33,6 +33,19 @@ const id = urlSearchParams.get("id")
       //Selection de l'id du formulaire
       const idForm = document.querySelector("#option")
          
+      // Choix quantité produit
+      const structureQuantité = `
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      `
+      // Afficher structureQuantité dans DOM
+      let positionQuantité = document.querySelector("#nmb_product")
+      positionQuantité.innerHTML = structureQuantité
+
+
       // Selection du bouton
       let btnEnvoyerPanier = document.getElementById("btn_envoyer")
        
@@ -41,9 +54,10 @@ const id = urlSearchParams.get("id")
         event.preventDefault()
         console.log(btnEnvoyerPanier)
       
-      
-      
-      //mettre le choix dans une variable
+      //mettre la quantité dans une variable
+      const choixQuantité = positionQuantité.value
+       
+      //mettre le choix de l'option dans une variable
       const choixForm = idForm.value
        
       //Récupération des valeurs du formulaire
@@ -52,8 +66,9 @@ const id = urlSearchParams.get("id")
         photo : info.imageUrl,
         option : choixForm,
         idProduit : info._id,
-        quantite : 1,
-        prix : info.price/100
+        quantite : choixQuantité,
+        prix : info.price /100,
+        prixTotal : (info.price * choixQuantité)/100
       }
         //---------LOCALSTORAGE ------------
         

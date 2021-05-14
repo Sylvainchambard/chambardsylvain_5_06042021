@@ -7,16 +7,7 @@ let produitEnregistre = JSON.parse(localStorage.getItem("produit"))
 let panierHtml = document.getElementById("produit_select")
 
 
-function checkQty(liste, option){
-    let total = 1
-    for(l = 0; l < liste.length; l++) {
-       if(liste[l] == option) {
-           total++
-       }
-    }console.log(total)
-return total
 
-}
 
 if(produitEnregistre === null || produitEnregistre == 0){
     let phrasePanierVide =`
@@ -26,9 +17,8 @@ if(produitEnregistre === null || produitEnregistre == 0){
 
 panierHtml.innerHTML = phrasePanierVide
 
-  } else {
+} else {
     for (let i = 0; i < produitEnregistre.length; i++) {
-        let qty = checkQty (produitEnregistre, produitEnregistre[i].option)
              
       document.getElementById("produit_select").innerHTML += `
         <div class="produit__panier">
@@ -39,7 +29,7 @@ panierHtml.innerHTML = phrasePanierVide
                 <p>${produitEnregistre[i].nom}</p>
                 <p>Option : ${produitEnregistre[i].option}</p>
                 <p>Prix : ${produitEnregistre[i].prix} €</p>
-                <p>Quantité : ${qty} </p>
+                <p>Quantité : ${produitEnregistre[i].quantite} </p>
             </div>
             <div class="trash">    
                 <button class="btn_delete"> <i class="fas fa-trash-alt"></i> </button>
@@ -105,22 +95,24 @@ selectBntDeleteAll.addEventListener("click", (e) =>{
 
 function afficherPrixTotal () {
     let sum = 0;
+    let qty = 0   
     for (let k = 0; k < produitEnregistre.length; k++ ) {
-        sum = sum + produitEnregistre[k].prix;
+        sum = (sum + produitEnregistre[k].prix * produitEnregistre[k].quantite);
+        qty =(qty + produitEnregistre.length * produitEnregistre[k].quantite / produitEnregistre.length)
     }
-    
     const prixTotal = `
     <div class="total_price">
-        <p>Sous-total ( ${produitEnregistre.length} article(s) ) : ${sum} €</p>
+        <p>Sous-total (${qty} article(s)) : ${sum} €</p>
     </div>
     <div class="btn_check_div">
         <button class="btn_check">Valider votre panier</button>
     </div>
     `
-    panierHtml.insertAdjacentHTML("afterend", prixTotal)
+ 
+  panierHtml.insertAdjacentHTML("afterend", prixTotal)
 
 
-}
+  } 
       afficherPrixTotal()
 
  
@@ -162,11 +154,6 @@ btn.onclick = function displayForm () {
     `
     positionHtml.innerHTML = formulaireHtml   
 
-
- 
-
-
- 
 // ------------------Récupération des valeurs du form
 
 //Selection du bouton
@@ -179,16 +166,14 @@ positionDom.addEventListener("click", (e) => {
     e.preventDefault()
     
 
-    const formulaireValues = {
-        nom : document.getElementById("nom").value,
-        prenom : document.getElementById("prenom").value,
-        adresse : document.getElementById("adresse").value,
-        ville : document.getElementById("ville").value,
-        codePostal : document.getElementById("codePostal").value,
-        email : document.getElementById("email").value
-
+    const contact = {
+        firstName : document.getElementById("nom").value,
+        lastName : document.getElementById("prenom").value,
+        email : document.getElementById("email").value,
+        address : document.getElementById("adresse").value,
+        city : document.getElementById("ville").value,
     }
-console.log(formulaireValues)
+console.log(contact)
 
 //-----------Controle du formulaire 
 const regExPrenomNomVille = (value) => {
@@ -204,12 +189,12 @@ const regExEmail = (value) => {
 }
 
 const regExAdresse = (value) => {
-    return /^[A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ0-9\s]{5,60}$/.test(value)
+    return /^[A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ0-9\s]{5,100}$/.test(value)
 }
 
 // controle prénom
 function prenomCtrl(){
-    let lePrenom = formulaireValues.prenom
+    let lePrenom = contact.prenom
     if (regExPrenomNomVille(lePrenom)) {
         return true
       } else {
@@ -220,7 +205,7 @@ function prenomCtrl(){
 
 //controle nom
 function nomCtrl(){
-    let leNom = formulaireValues.nom
+    let leNom = contact.nom
     if (regExPrenomNomVille(leNom)) {
         return true
       } else {
@@ -231,7 +216,7 @@ function nomCtrl(){
 
 //controle adresse
 function adresseCtrl(){
-    let laAdresse = formulaireValues.adresse
+    let laAdresse = contact.adresse
     if (regExAdresse(laAdresse)) {
         return true
       } else {
@@ -242,7 +227,7 @@ function adresseCtrl(){
 
 //controle ville
 function villeCtrl(){
-    let laVille = formulaireValues.ville
+    let laVille = contact.ville
     if (regExPrenomNomVille(laVille)) {
         return true
       } else {
@@ -253,7 +238,7 @@ function villeCtrl(){
 
 //controle CodePostal
 function codePostalCtrl(){
-    let leCodePostal = formulaireValues.codePostal
+    let leCodePostal = contact.codePostal
     if (regExCodePostal(leCodePostal)) {
         return true
       } else {
@@ -263,7 +248,7 @@ function codePostalCtrl(){
 }
 
 function emailCtrl(){
-    let leEmail = formulaireValues.email
+    let leEmail = contact.email
     if (regExEmail(leEmail)) {
         return true
       } else {
@@ -274,14 +259,16 @@ function emailCtrl(){
 
 // envoie des donnes formulaire dans le localStorage
 if (prenomCtrl() && (nomCtrl()) && villeCtrl() && codePostalCtrl() && emailCtrl() && adresseCtrl() ) {
-    localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
+    localStorage.setItem("contact", JSON.stringify(contact))
 } else {
+    
     alert("Veuillez remplir tous les champs du formulaire")
+    return false
 }
 
 const aEnvoyer = {
     produitEnregistre,
-    formulaireValues
+    contact
 }
 console.log(aEnvoyer)
 
@@ -290,3 +277,5 @@ console.log(aEnvoyer)
 displayForm()
 })
 }
+
+//--------- Envoie resultat a l'api (POST)
