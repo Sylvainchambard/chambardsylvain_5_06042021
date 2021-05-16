@@ -7,19 +7,29 @@ const id = urlSearchParams.get("id");
 
 fetch(`http://localhost:3000/api/teddies/${id}`)
   .then((response) => response.json())
-  .then((info) => {
-    let name = document.getElementById("name");
+  .then((info) => { // ciblage element DOM
+    let name = document.getElementById("name_descr");
     let price = document.getElementById("price");
     let description = document.getElementById("description");
-    let image = document.getElementById("picture");
+    let image = document.getElementById("img_name_descr");
     let colors = document.getElementById("info_colors");
 
-    name.innerText = info.name;
+    //insertion image
+    let imageSrc = document.createElement("img")
+    imageSrc.src = info.imageUrl
+    image.appendChild(imageSrc)
+
+    //insertion h1 nom article
+    name.insertAdjacentHTML("afterbegin", `<h1>${info.name}</h1>`)
+
+    //insertion prix de l'article
     price.innerText = "Prix : " + info.price / 100 + " €";
     description.innerText = info.description;
-    image.src = info.imageUrl;
-    colors.innerText = `Choisissez parmis ses ${info.colors.length} couleurs différentes `;
+    
 
+    colors.innerText = `Choisissez parmis ses ${info.colors.length} couleurs différentes `;
+    
+    //boucle pour insérer toutes les options disponible
     let allColors = [];
     for (let i = 0; i < info.colors.length; i++) {
       allColors += `<option value=${info.colors[i]}>${info.colors[i]}</option> `;

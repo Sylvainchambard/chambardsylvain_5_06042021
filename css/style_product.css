@@ -39,9 +39,15 @@ main
 	justify-content: space-around;
 }
 
-.img_name_descr
+h1
+{
+    text-align: center;
+}
+
+#img_name_descr
 {
 	display: flex;
+    flex-direction: column-reverse;
 }
 
 .name_descr
@@ -51,7 +57,7 @@ main
 	padding-left: 10px;
 }
 
-#picture
+main img
 {
 	border: 2px solid black;
 	max-width: 250px;
