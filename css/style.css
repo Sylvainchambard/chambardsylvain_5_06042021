@@ -5,7 +5,7 @@ body
 	margin: auto;
 	font-family: 'Nunito', sans-serif;
 }
-
+/*------ HEADER ----*/
 header
 {
 	margin: auto;
@@ -27,7 +27,7 @@ header
 	align-items: center;
 	font-size: 36px;
 }
-
+/*------- MAIN ----- */
 h1
 {
 	display: flex;
@@ -35,7 +35,7 @@ h1
 	margin-top: 20px;
 }
 
-section
+#ancre
 {
 	display: flex;
 	margin: auto;
@@ -61,7 +61,7 @@ section
 	padding: 0px 10px 10px 10px;
 }
 
-section img
+#ancre img
 {
 	width: auto;
 	max-width: 240px;

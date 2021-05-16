@@ -70,10 +70,26 @@ main
 	align-items: center;
 }
 
+#select_color
+{
+    margin-bottom: 15px;
+}
+
+#select_qty
+{
+    margin-bottom: 15px;
+}
+
 #btn_envoyer
 {
-	margin: 10px;
-	background-color: #f3e9f1 ;
+    background: #FFD814;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+	padding: 15px;
+	cursor: pointer;
+	width: 250px;
+	margin: 15px;
+	align-self: center;
 }
 
 a

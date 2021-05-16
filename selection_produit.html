@@ -24,7 +24,7 @@
 			<section id="ancre_produit">
 				<div class="mise_en_page">
 					<div class="img_name_descr">
-						<img src="" id="picture"/>
+						<img id="picture" alt="image de peluche"/>
 						<div class="name_descr">
 							<h1 id="name"></h1>
 							<p id="description"></p>
@@ -33,9 +33,12 @@
 					<p id="price"></p>
 					<div class="select">
 						<p id="info_colors"></p>
-						<form>
+						<form id="select_color">
 							<label for="option"></label>
 							<select id="option"></select>
+                        </form>
+
+                        <form id="select_qty">    
 							<label for="qty_product">Choisir la quantité</label>
 							<select name="qty_product" id="nmb_product"></select>
 						</form>
@@ -45,6 +48,6 @@
 			</section>
 		</main>
 		<footer></footer>
-		<script  src="produit.js"></script>
+		<script  src="javascript/produit.js"></script>
 	</body>
 </html>
