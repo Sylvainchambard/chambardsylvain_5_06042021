@@ -50,7 +50,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         <option value="5">5</option>
       `;
     // Afficher structureQuantité dans DOM
-    let positionQuantité = document.querySelector("#nmb_product");
+    let positionQuantité = document.querySelector("#qty_product");
     positionQuantité.innerHTML = structureQuantité;
 
     // Selection du bouton
