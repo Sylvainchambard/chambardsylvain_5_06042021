@@ -1,91 +1,87 @@
+
 body
 {
-    width: 100%;
-    margin: auto;
-    font-family: 'Nunito', sans-serif;
+	width: 100%;
+	margin: auto;
+	font-family: 'Nunito', sans-serif;
 }
 
-header 
+header
 {
-    margin: auto;
+	margin: auto;
 }
 
 #display_header
 {
-    display: flex;
-    background-color: #f3e9f1;
-    justify-content: space-between;
-    padding: 5px 20px 0px 0px;
-    align-items: center;
+	display: flex;
+	background-color: #f3e9f1;
+	justify-content: space-between;
+	padding: 5px 20px 0px 0px;
+	align-items: center;
 }
 
 .fa-shopping-cart
 {
-    color: rgb(159, 0, 180);
-    display: flex;
-    align-items: center;
-    font-size: 36px;
+	color: rgb(159, 0, 180);
+	display: flex;
+	align-items: center;
+	font-size: 36px;
 }
 
-h1 
+h1
 {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
 }
 
 section
 {
-    display: flex;
-    margin: auto;
-    justify-content: space-around;
-    flex-wrap: wrap;
+	display: flex;
+	margin: auto;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .all
 {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    margin: 50px;
-    border: 5px solid #f3e9f1;
-    border-radius: 15%;
-    background-color: #f3e9f1;
-    max-width: 240px;
-   
-    
-    }
-
-.all p {
-   text-align: center;
-    padding: 0px 10px 10px 10px;
-  
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+	margin: 50px;
+	border: 5px solid #f3e9f1;
+	border-radius: 15%;
+	background-color: #f3e9f1;
+	max-width: 240px;
 }
 
-
-
-section img 
+.all p
 {
-    
-        width: auto;
-        max-width: 240px;
-        border-top-left-radius: 20%;
-        border-top-right-radius: 20%;
-        object-fit: cover;
+	text-align: center;
+	padding: 0px 10px 10px 10px;
 }
 
-#btn 
+section img
 {
-    background: radial-gradient( ellipse at top left, #ffa652, #933efc);
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    border-radius: 40%;
-    text-decoration: none;
+	width: auto;
+	max-width: 240px;
+	border-top-left-radius: 20%;
+	border-top-right-radius: 20%;
+	object-fit: cover;
+}
+
+#btn
+{
+	background: radial-gradient( ellipse at top left, #ffa652, #933efc);
+	width: 90%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	border-radius: 40%;
+	text-decoration: none;
 }
 
 a
 {
-    text-decoration: none;
+	text-decoration: none;
 }
