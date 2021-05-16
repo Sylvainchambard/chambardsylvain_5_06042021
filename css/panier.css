@@ -2,6 +2,7 @@ body
 {
     width: 100%;
     margin: auto;
+    font-family: 'Nunito', sans-serif;
 }
 /*------ Header -----*/
 header 
@@ -104,25 +105,16 @@ main img
     
 }
 
-.btn_check
-{
-    background: #FFD814;
-    border-color: #FCD200;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
-    padding: 15px;
-    cursor: pointer;
-    width: 250px;
-    margin: 15px;
-
-}
-
 .panier_vide
 {
     display: flex;
     justify-content: center;
     font-size: 25px;
+}
+
+a
+{
+    text-decoration: none;
 }
 
 /*----------------- FORMULAIRE ---------------*/
@@ -156,7 +148,8 @@ input
     margin-bottom: 10px;
 }
 
-.btn_send_form
+.btn_check,
+.btn_send_form 
 {
     background: #FFD814;
     border-color: #FCD200;
@@ -169,12 +162,31 @@ input
     margin: 15px;
 }
 
-#erreur
+#btn_acceuil
 {
-    text-align: center;
-    color: red;
-    
+    background: #FFD814;
+    border-color: #FCD200;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+    padding: 15px;
+    cursor: pointer;
+    width: 250px;
+    margin: 15px;
+    align-self: center;
 }
+
+#merci
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #f3e9f1;
+    margin: auto;
+    margin-top: -20px;
+    padding-bottom: 80px;
+}
+
 /* -------- footer -------- */
 footer
 {
@@ -188,7 +200,4 @@ footer
     {
         flex-direction: column;
     }
-
-    
-
 }

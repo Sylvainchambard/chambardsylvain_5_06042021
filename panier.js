@@ -121,9 +121,9 @@ function afficherPrixTotal () {
 let positionHtml = document.getElementById("formulaire")
 btn = document.querySelector(".btn_check")
 console.log(btn)
+
 btn.onclick = function displayForm () {
   
-
     const formulaireHtml = `    
     <div class="formulaire_limite">
         <h2>Formulaire de validation de commande</h2>
@@ -140,9 +140,6 @@ btn.onclick = function displayForm () {
 
                 <label for="ville">Ville :</label>
                 <input type="text" id="ville" name="ville" required>
-
-                <label for="codePostal">Code Postal :</label>
-                <input type="text" id="codePostal" name="codePostal" required>
 
                 <label for="email">E-mail :</label>
                 <input type="text" id="email" name="email" required>
@@ -178,10 +175,6 @@ console.log(contact)
 //-----------Controle du formulaire 
 const regExPrenomNomVille = (value) => {
     return /^^[A-Za-zéè]+([ \-']?[a-zA-Za-zéè]+[ \-']?[a-zA-Za-zéè]+[ \-']?)[a-zA-Za-zéè]+$/.test(value)
-}
-
-const regExCodePostal = (value) => {
-    return /^[0-9]{5}$/.test(value)
 }
 
 const regExEmail = (value) => {
@@ -236,17 +229,6 @@ function villeCtrl(){
       }
 }
 
-//controle CodePostal
-function codePostalCtrl(){
-    let leCodePostal = contact.codePostal
-    if (regExCodePostal(leCodePostal)) {
-        return true
-      } else {
-        alert("Code Postal incorrect")
-        return false
-      }
-}
-
 function emailCtrl(){
     let leEmail = contact.email
     if (regExEmail(leEmail)) {
@@ -258,24 +240,81 @@ function emailCtrl(){
 }
 
 // envoie des donnes formulaire dans le localStorage
-if (prenomCtrl() && (nomCtrl()) && villeCtrl() && codePostalCtrl() && emailCtrl() && adresseCtrl() ) {
+if (prenomCtrl() && (nomCtrl()) && villeCtrl() && emailCtrl() && adresseCtrl() ) {
     localStorage.setItem("contact", JSON.stringify(contact))
 } else {
     
     alert("Veuillez remplir tous les champs du formulaire")
     return false
 }
-
+/*
 const aEnvoyer = {
     produitEnregistre,
     contact
 }
 console.log(aEnvoyer)
+*/
+//--------- Envoie resultat a l'api (POST)
+
+  // -------------- Contenant produit panier
+  let produitEnregistre = JSON.parse(
+    localStorage.getItem("produit")
+  );
+
+  // -----------Récupération de l'ID produit
+  let products = [];
+  produitEnregistre.forEach(
+    (produitEnregistre) => {
+      products.push(produitEnregistre.idProduit);
+    }
+  );
+
+  // -----------------envoie sur le serveur
+
+  let promise = fetch("https://oc-p5-api.herokuapp.com/api/teddies/order", {
+    method: "POST",
+    body: JSON.stringify({ contact, products }),
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    // -------------reception des info du serveur
+
+    .then((reponse) => reponse.json())
+    .then((reponse) => {
+
+      // --------------Message remerciment
+      
+    let body = document.body;
+    body.innerHTML = `
+    <header>
+        <div id="display_header">
+            <a href="#">
+                <img src ="images/logo.png" alt="logo de l'entreprise ORINOCO"/>
+            </a>    
+      
+    </header>
+    <main id="merci" class="merci_merci";">
+        <h1>Confirmation de commande</h1>
+            <p> Votre commande à bien été prise en compte <br /> Votre numéro de suivis de commande est le : "${reponse.orderId}"</p>
+            <p>Merci pour votre confiance</p>
+          
+            <button id="btn_acceuil">Retour à l'Accueil</button>
+    </main>`;
+      
+      // ---------------Retour à l'acceuil et suppression du localStorage
+
+      let closeModal = document.getElementById("btn_acceuil");
+      closeModal.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "index.html";
+        localStorage.removeItem("produit");
+      
+    });
+});
 
 
- 
 displayForm()
 })
 }
-
-//--------- Envoie resultat a l'api (POST)

@@ -2,6 +2,7 @@ body
 {
     width: 100%;
     margin: auto;
+    font-family: 'Nunito', sans-serif;
 }
 
 header 
@@ -81,4 +82,10 @@ section img
     display: flex;
     justify-content: center;
     border-radius: 40%;
+    text-decoration: none;
+}
+
+a
+{
+    text-decoration: none;
 }

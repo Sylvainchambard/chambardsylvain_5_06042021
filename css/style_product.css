@@ -2,6 +2,7 @@ body
 {
     width: 100%;
     margin: auto;
+    font-family: 'Nunito', sans-serif;
 }
 /*------ Header -----*/
 header 
@@ -76,4 +77,9 @@ main
 {
     margin: 10px;
     background-color: #f3e9f1 ;
+}
+
+a
+{
+    text-decoration: none;
 }
