@@ -190,18 +190,94 @@ input
 }
 
 /* -------- footer -------- */
+/* ---------- Footer -----------*/
 footer
 {
+	background-color: #f3e9f1;
 	text-align: center;
-	margin: 50px;
+	padding-bottom: 15px;
 }
 
-@media only screen and (max-width: 800px)
+.sm-handle
 {
+	display: flex;
+	padding-top: 2rem;
+	justify-content: center;
+}
+
+.sm-button
+{
+	margin: 0px 10px 0px;
+	border: 1px solid #000000;
+	border-radius: 100%;
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.sm-button:hover
+{
+	background: radial-gradient( ellipse at top left, #ffa652, #933efc);
+}
+
+.fab
+{
+	color: rgb(0, 0, 0);
+	font-size: 18px;
+}
+
+.footer-links
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	color: rgb(0, 0, 0);
+	letter-spacing: 1.5px;
+	word-spacing: 2px;
+}
+
+.menu-title
+{
+	margin-bottom: 10px;
+}
+
+.menu
+{
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+.menu-links ,.other-links
+{
+	display: block;
+	color: #000000;
+	cursor: pointer;
+}
+
+.menu-links:hover
+{
+	color: #ff0000;
+}
+
+.other-links:hover
+{
+	color: #ff0000;
+}
+
+@media(max-width :700px)
+{
+	.footer-links
+	{
+		grid-template-columns: 1fr;
+	}
+	
 	.produit__panier
 	{
 		flex-direction: column;
 		width: auto;
 		align-items: center;
 	}
+
 }
