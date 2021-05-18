@@ -27,6 +27,7 @@ function remplirListeProduits(nounours) {
     price.innerText = elem.price/100+" €"
     description.innerText = elem.description
     image.src = elem.imageUrl
+    image.alt = "image peluche "
     btn.innerHTML = "Voir Produit"
     
     //Modification du DOM

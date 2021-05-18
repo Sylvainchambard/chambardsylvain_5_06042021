@@ -18,6 +18,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
     //insertion image
     let imageSrc = document.createElement("img")
     imageSrc.src = info.imageUrl
+    imageSrc.alt = "image peluche"
     image.appendChild(imageSrc)
 
     //insertion h1 nom article

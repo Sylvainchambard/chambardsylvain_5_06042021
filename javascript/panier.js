@@ -18,7 +18,7 @@ if (produitEnregistre === null || produitEnregistre == 0) {
             document.getElementById("produit_select").innerHTML += `
                 <div class="produit__panier">
                     <div class="picture">
-                        <img src="${produitEnregistre[i].photo}" alt="peluche"/>
+                        <img src="${produitEnregistre[i].photo}" alt="image peluche"/>
                     </div>
                     <div class="content">    
                         <p>${produitEnregistre[i].nom}</p>
@@ -176,7 +176,7 @@ btn.onclick = function displayForm() {
 
     // controle prénom
     function prenomCtrl() {
-        let lePrenom = contact.prenom
+        let lePrenom = contact.lastName
         if (regExPrenomNomVille(lePrenom)) {
             return true;
         } else {
@@ -187,7 +187,7 @@ btn.onclick = function displayForm() {
 
     //controle nom
     function nomCtrl() {
-        let leNom = contact.nom
+        let leNom = contact.firstName
         if (regExPrenomNomVille(leNom)) {
             return true
         } else {
@@ -198,7 +198,7 @@ btn.onclick = function displayForm() {
 
     //controle adresse
     function adresseCtrl() {
-        let laAdresse = contact.adresse;
+        let laAdresse = contact.address;
         if (regExAdresse(laAdresse)) {
             return true;
         } else {
@@ -209,7 +209,7 @@ btn.onclick = function displayForm() {
 
     //controle ville
     function villeCtrl() {
-        let laVille = contact.ville;
+        let laVille = contact.city;
         if (regExPrenomNomVille(laVille)) {
             return true
         } else {
@@ -237,7 +237,7 @@ btn.onclick = function displayForm() {
     ){
         localStorage.setItem("contact", JSON.stringify(contact));
     }   else {
-            alert("Veuillez remplir tous les champs du formulaire");
+            alert("Veuillez remplir correctement tous les champs du formulaire");
             return false
         }
    
