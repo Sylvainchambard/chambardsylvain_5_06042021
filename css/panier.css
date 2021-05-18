@@ -42,7 +42,7 @@ h1
 	justify-content: center;
 	margin: auto;
 	border: 1px chocolate solid;
-	width: max-content;
+	width: 450px;
 	margin-bottom: 15px;
 }
 
@@ -69,7 +69,6 @@ main img
 {
 	display: flex;
 	justify-content: center;
-	margin-right: -30px;
 }
 
 .btn_delete
@@ -132,7 +131,7 @@ a
 	border: 2px solid black;
 	border-radius: 5px;
 	margin: auto;
-	width: 500px;
+	max-width: 500px;
 }
 
 h2
@@ -202,5 +201,7 @@ footer
 	.produit__panier
 	{
 		flex-direction: column;
+		width: auto;
+		align-items: center;
 	}
 }

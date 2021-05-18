@@ -5,51 +5,41 @@ async function fillProducts() {
 }
  
 function remplirListeProduits(nounours) {
-  for (let elem of nounours) {                        //récupère tous les elements de l'api
-  let id = elem._id  
- 
-  let divClass = document.createElement("div") // créé une div
-  divClass.setAttribute ("class", "all")        // nommée class "all"
-  
-  let ancre = document.getElementById("ancre")  // variable ancre = a l'id ancre
-  
-
-  let link = document.createElement("a")    //créé la balise <a>
-  link.setAttribute("href", `selection_produit.html?id=${id}`)
-  
+  for (let elem of nounours) {     //récupère tous les elements de l'api
     
-  let paragraphe = document.createElement("p")      // création 
-  paragraphe.innerText = elem.name             // recup
- 
-  
-  let price = document.createElement ("p")
-  price.innerText = elem.price/100+" €"
-  
-  let description = document.createElement ("p")
-  description.innerText = elem.description
-  
-  let image = document.createElement("img")
-  image.src = elem.imageUrl
-  
-  let btn = document.createElement("BUTTON");  // créé le bouton
-  btn.setAttribute("id", "btn") 
-  btn.innerHTML = "Voir Produit"
-
-      ancre.appendChild(divClass) 
-      divClass.appendChild(link)
-      
-      link.appendChild(image)   // modification
-      link.appendChild(paragraphe)
-      link.appendChild(price) 
-      link.appendChild(btn)    
+    let ancre = document.getElementById("ancre")  // variable ancre = a l'id "ancre"
+    let id = elem._id
     
- 
-   
+    // Création des balises dans le DOM avec pour certain l'ajout d'attribut
+    let divClass = document.createElement("div") 
+    divClass.setAttribute ("class", "all")        
+    let link = document.createElement("a")    
+    link.setAttribute("href", `selection_produit.html?id=${id}`)
+    let paragraphe = document.createElement("p")      
+    let price = document.createElement ("p")
+    let description = document.createElement ("p")
+    let image = document.createElement("img")
+    let btn = document.createElement("BUTTON")
+    btn.setAttribute("id", "btn") 
+  
+    // Récupération des données pour chaque balise
+    paragraphe.innerText = elem.name             
+    price.innerText = elem.price/100+" €"
+    description.innerText = elem.description
+    image.src = elem.imageUrl
+    btn.innerHTML = "Voir Produit"
+    
+    //Modification du DOM
+    ancre.appendChild(divClass);
+    divClass.appendChild(link);
+    link.appendChild(image); 
+    link.appendChild(paragraphe);
+    link.appendChild(price);
+    link.appendChild(btn); 
 
+    console.log(ancre) 
   }
 } 
-
-
 fillProducts()
 
 
