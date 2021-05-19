@@ -2,7 +2,6 @@
 const queryString_url_id = window.location.search
 const urlSearchParams = new URLSearchParams(queryString_url_id)
 const id = urlSearchParams.get("id")
-console.log(queryString_url_id)
 // ETAPE 2 - Récupération des infos de l'api
 
 fetch(`http://localhost:3000/api/teddies/${id}`)
@@ -77,7 +76,6 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         prix: info.price / 100,
         prixTotal: (info.price * choixQuantité) / 100,
       }
-
       //---------LOCALSTORAGE ------------
 
       let produitEnregistre = JSON.parse(localStorage.getItem("produit")) //récupere lélément produit
@@ -87,6 +85,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
       function ajoutProduitLocalStorage() {
         //ajout dans le tableau de l'objet avec les valeurs choisis par l'utilisateur
         produitEnregistre.push(optionProduit)
+        alert("Le produit a bien été ajouté au panier")
 
         // transformation en format JSON et l'envoyer dans la key "produit" du localStorage
         localStorage.setItem("produit", JSON.stringify(produitEnregistre))

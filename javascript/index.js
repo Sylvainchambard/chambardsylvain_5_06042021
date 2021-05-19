@@ -37,8 +37,6 @@ function remplirListeProduits(nounours) {
     link.appendChild(paragraphe);
     link.appendChild(price);
     link.appendChild(btn); 
-
-    console.log(ancre) 
   }
 } 
 fillProducts()

@@ -41,7 +41,6 @@ remplirPanier()
 //---- Selection de tous les boutons supprimer
 function SupprimerUnArticle() {
     let btnDelete = document.querySelectorAll(".btn_delete")
-    console.log(btnDelete)
 
     for (let j = 0; j < btnDelete.length; j++) {
         btnDelete[j].addEventListener("click", (event) => {
@@ -49,7 +48,6 @@ function SupprimerUnArticle() {
 
             //selection de l'iD qui va être supprimer au click
             let id_select_delete = produitEnregistre[j].option
-            console.log(id_select_delete)
 
             // avec la methode filter je selectionne les éléments à garger et je supprime l'élément ou le btn a été cliqué
             produitEnregistre = produitEnregistre.filter(
@@ -84,10 +82,10 @@ function supprimerTous() {
     selectBntDeleteAll.addEventListener("click", (e) => {
         e.preventDefault
 
-        localStorage.removeItem("produit")
-
-        alert("Le panier à été vidé !")
-        window.location.href = "panier.html"
+        if ( confirm( "Votre panier va être supprimé" ) ) {
+            localStorage.removeItem("produit")
+            window.location.href = "panier.html"
+        } 
     })
 }
 supprimerTous()
@@ -120,7 +118,6 @@ afficherPrixTotal()
 
 let positionHtml = document.getElementById("formulaire")
 btn = document.querySelector(".btn_check")
-console.log(btn)
 
 btn.onclick = function apparitionFormulaire() {
     const formulaireHtml = `    
@@ -145,7 +142,6 @@ btn.onclick = function apparitionFormulaire() {
 
                     <input type="submit" class="btn_send_form"  name="valider" value="Envoyer" required>
                 </form>
-                <div id="erreur"></div>
         </div>        
         `
     positionHtml.innerHTML = formulaireHtml
@@ -154,7 +150,6 @@ btn.onclick = function apparitionFormulaire() {
 
     //Selection du bouton
     let btnFormulaire = document.querySelector(".btn_send_form")
-    console.log(btnFormulaire);
 
     btnFormulaire.addEventListener("click", (e) => {
         e.preventDefault()
@@ -166,7 +161,6 @@ btn.onclick = function apparitionFormulaire() {
             address: document.getElementById("adresse").value,
             city: document.getElementById("ville").value,
         }
-        console.log(contact)
 
         //-----------Controle du formulaire
         const regExPrenomNomVille = (value) => {
