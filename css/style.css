@@ -53,7 +53,7 @@ h1
 	margin: 50px;
 	border-radius: 15%;
 	background-color: #f3e9f1;
-	max-width: 240px;
+	max-width: 270px;
 }
 
 .all p
@@ -64,11 +64,11 @@ h1
 
 #ancre img
 {
-	width: auto;
-	max-width: 240px;
+	max-width: 270px;
 	border-top-left-radius: 20%;
 	border-top-right-radius: 20%;
 	object-fit: cover;
+	height: 270px;
 }
 
 #btn
@@ -172,4 +172,13 @@ footer
 		grid-template-columns: 1fr;
 	}
 
+	.all
+	{
+		max-width: 200px;
+	}
+
+	#ancre img
+	{
+		width: 200px;
+	}
 }
