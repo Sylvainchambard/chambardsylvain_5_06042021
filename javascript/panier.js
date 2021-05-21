@@ -254,7 +254,7 @@ btn.onclick = function apparitionFormulaire() {
         });
         // -----------------envoie sur le serveur
 
-        let promise = fetch("http://localhost:3000/api/teddies/order", {
+        let promise = fetch("https://ocprojet5.herokuapp.com/api/teddies/order", {
             method: "POST",
             body: JSON.stringify({ contact, products }),
             headers: {

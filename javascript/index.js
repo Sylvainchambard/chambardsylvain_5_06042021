@@ -1,5 +1,5 @@
 async function fillProducts() {
-  await fetch('http://localhost:3000/api/teddies') 
+  await fetch('https://ocprojet5.herokuapp.com/api/teddies') 
     .then((response) => response.json()) 
     .then((nounours) => remplirListeProduits(nounours))
 }
