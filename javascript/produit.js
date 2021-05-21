@@ -4,7 +4,7 @@ const urlSearchParams = new URLSearchParams(queryString_url_id)
 const id = urlSearchParams.get("id")
 // ETAPE 2 - Récupération des infos de l'api
 
-fetch(`http://localhost:3000/api/teddies/${id}`)
+fetch(`https://ocprojet5.herokuapp.com/api/teddies/${id}`)
   .then((response) => response.json())
   .then((info) => {
     // ciblage element DOM
